@@ -24,7 +24,7 @@ export default function HeroSection() {
             </Link>
             <Link href="#profit-simulator">
               <Button size="lg" variant="outline" data-testid="button-learn-more">
-                I'll Pay Cash
+                I&apos;ll Pay Cash
               </Button>
             </Link>
           </div>
