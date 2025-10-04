@@ -5,7 +5,7 @@ import { Link } from "wouter";
 
 interface EligibilityResultProps {
   isEligible: boolean;
-  purchaseOption: string;
+  purchaseOption: 'financing' | 'outright';
   onStartApplication?: () => void;
 }
 

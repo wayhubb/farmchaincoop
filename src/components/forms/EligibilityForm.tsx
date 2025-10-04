@@ -14,7 +14,7 @@ export default function Eligibility() {
   const [, setLocation] = useLocation();
   const [step, setStep] = useState(1);
   const [leadData, setLeadData] = useState<Record<string, unknown> | null>(null);
-  const [selectedOption, setSelectedOption] = useState<string>("financing");
+  const [selectedOption, setSelectedOption] = useState<"financing" | "outright">("financing");
   const [eligibilityResult, setEligibilityResult] = useState<Record<string, unknown> | null>(null);
 
   const steps = [
@@ -24,9 +24,9 @@ export default function Eligibility() {
     { number: 4, title: "Result", description: "Outcome" },
   ];
 
-  const handleLeadCapture = (data: any) => {
+  const handleLeadCapture = (data: Record<string, unknown>) => {
   console.log("Lead captured:", data);
-  setLeadData(data as Record<string, unknown>);
+  setLeadData(data);
   setStep(2);
   };
 
@@ -35,7 +35,7 @@ export default function Eligibility() {
     setStep(3);
   };
 
-  const handleEligibilityTest = async (data: any) => {
+  const handleEligibilityTest = async (data: Record<string, unknown>) => {
     console.log("Eligibility test result:", data);
     // Combine leadData and eligibility test data
     const formData = {
@@ -93,7 +93,7 @@ export default function Eligibility() {
                 <div className="flex justify-center mt-8">
                   <button
                     onClick={handleOptionSelected}
-                    className="px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover-elevate active-elevate-2"
+                    className="px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:shadow-lg active:shadow-md transition-shadow"
                     data-testid="button-continue-to-test"
                   >
                     Continue to Eligibility Test

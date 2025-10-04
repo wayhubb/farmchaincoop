@@ -8,11 +8,6 @@ type EligibilityRequest = {
     option: 'financing' | 'outright';
 };
 
-type EligibilityResponse = {
-    status: 'eligible' | 'ineligible';
-    message: string;
-};
-
 interface StoredLead extends EligibilityRequest {
     status: 'eligible' | 'ineligible';
 }
@@ -56,7 +51,7 @@ export async function POST(req: NextRequest) {
         // Save lead data to mock database
         leads.push({ name, email, phone, monthlyIncome: income, option, status });
 
-        return NextResponse.json({ status, message });
+        return NextResponse.json({ status, message } as { status: 'eligible' | 'ineligible'; message: string });
     } catch (error) {
         const errorMessage = error instanceof Error ? error.message : 'Server error.';
         return new Response(

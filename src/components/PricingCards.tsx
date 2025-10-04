@@ -4,8 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/Button";
 import { Check } from "lucide-react";
 
+type PaymentOption = "financing" | "outright";
+
 interface PricingOption {
-  id: string;
+  id: PaymentOption;
   title: string;
   price: string;
   period: string;
@@ -15,8 +17,8 @@ interface PricingOption {
 }
 
 interface PricingCardsProps {
-  selectedOption: string;
-  onSelectOption: (optionId: string) => void;
+  selectedOption: PaymentOption;
+  onSelectOption: (optionId: PaymentOption) => void;
 }
 
 export default function PricingCards({ selectedOption, onSelectOption }: PricingCardsProps) {
@@ -57,10 +59,8 @@ export default function PricingCards({ selectedOption, onSelectOption }: Pricing
       {options.map((option) => (
         <Card
           key={option.id}
-          className={`p-6 cursor-pointer transition-all hover-elevate ${
-            selectedOption === option.id
-              ? "ring-2 ring-primary border-primary"
-              : ""
+          className={`p-6 cursor-pointer transition-all hover:shadow-lg ${
+            selectedOption === option.id ? "ring-2 ring-primary border-primary" : ""
           } ${option.highlighted ? "border-primary/30" : ""}`}
           onClick={() => onSelectOption(option.id)}
           data-testid={`card-pricing-${option.id}`}
@@ -72,14 +72,12 @@ export default function PricingCards({ selectedOption, onSelectOption }: Pricing
               </span>
             </div>
           )}
-          
           <h3 className="text-xl font-bold mb-2">{option.title}</h3>
           <div className="mb-4">
             <div className="text-3xl font-bold text-foreground">{option.price}</div>
             <div className="text-sm text-muted-foreground">{option.period}</div>
           </div>
           <p className="text-sm text-muted-foreground mb-6">{option.description}</p>
-          
           <ul className="space-y-3 mb-6">
             {option.features.map((feature, index) => (
               <li key={index} className="flex items-start gap-2">
@@ -88,7 +86,6 @@ export default function PricingCards({ selectedOption, onSelectOption }: Pricing
               </li>
             ))}
           </ul>
-
           <Button
             variant={selectedOption === option.id ? "default" : "outline"}
             className="w-full"
