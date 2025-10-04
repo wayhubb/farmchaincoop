@@ -1,3 +1,5 @@
+"use client";
+
 import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";

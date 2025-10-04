@@ -1,7 +1,9 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
   Form,
   FormControl,
@@ -63,7 +65,7 @@ export default function MembershipApplicationForm({
   onSave,
   defaultValues,
 }: MembershipApplicationFormProps) {
-  const form = useForm<ApplicationFormData>({
+  const form = useForm<Partial<ApplicationFormData>>({
     resolver: zodResolver(applicationSchema.partial()),
     defaultValues: defaultValues || {},
   });
