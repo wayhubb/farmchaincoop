@@ -9,7 +9,7 @@ interface EligibilityResultProps {
   onStartApplication?: () => void;
 }
 
-export default function EligibilityResult({ isEligible, purchaseOption, onStartApplication }: EligibilityResultProps) {
+export default function EligibilityResult({ isEligible, onStartApplication }: EligibilityResultProps) {
   return (
     <Card className="p-8 max-w-2xl mx-auto text-center">
       {isEligible ? (
