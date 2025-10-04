@@ -13,7 +13,11 @@ type EligibilityResponse = {
     message: string;
 };
 
-let leads: any[] = [];
+interface StoredLead extends EligibilityRequest {
+    status: 'eligible' | 'ineligible';
+}
+
+const leads: StoredLead[] = [];
 
 export async function POST(req: NextRequest) {
     try {
@@ -53,9 +57,10 @@ export async function POST(req: NextRequest) {
         leads.push({ name, email, phone, monthlyIncome: income, option, status });
 
         return NextResponse.json({ status, message });
-    } catch (error: any) {
+    } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Server error.';
         return new Response(
-            JSON.stringify({ status: 'error', message: error.message || 'Server error.' }),
+            JSON.stringify({ status: 'error', message: errorMessage }),
             { status: 500 }
         );
     }

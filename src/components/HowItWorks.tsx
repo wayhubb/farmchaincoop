@@ -31,7 +31,7 @@ export default function HowItWorks() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">How FarmChain Works</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We're the first cooperative in Africa to mint every living cow as a digital passport
+            We&apos;re the first cooperative in Africa to mint every living cow as a digital passport
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export default function HowItWorks() {
         
         <div className="text-center mt-12">
           <p className="text-sm italic text-muted-foreground">
-            You didn't just raise a cow. You raised a digital asset with real-world cash value.
+            You didn&apos;t just raise a cow. You raised a digital asset with real-world cash value.
           </p>
         </div>
       </div>

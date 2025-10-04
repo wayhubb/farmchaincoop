@@ -13,7 +13,7 @@ export default function BlockchainExplainer() {
               <ol className="space-y-3 text-left">
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold text-xl">1.</span>
-                  <span>Once I write something, I can't erase it.</span>
+                  <span>Once I write something, I can&apos;t erase it.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold text-xl">2.</span>
@@ -24,11 +24,11 @@ export default function BlockchainExplainer() {
                   <span>No one can secretly change the past.</span>
                 </li>
               </ol>
-              <p className="mt-4 font-semibold">That's it.</p>
+              <p className="mt-4 font-semibold">That&apos;s it.</p>
             </div>
 
             <p className="text-muted-foreground">
-              No moon coins. No Ponzi yields. No "degen farming."
+              No moon coins. No Ponzi yields. No &quot;degen farming.&quot;
             </p>
             
             <p className="font-bold text-2xl">
@@ -36,7 +36,7 @@ export default function BlockchainExplainer() {
             </p>
 
             <div className="pt-6">
-              <p className="text-xl">We're not selling tokens. We're selling truth.</p>
+              <p className="text-xl">We&apos;re not selling tokens. We&apos;re selling truth.</p>
               <p className="text-2xl font-bold text-primary mt-2">
                 And truth? It sells for 8–12% more.
               </p>

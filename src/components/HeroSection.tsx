@@ -9,7 +9,7 @@ export default function HeroSection() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground leading-tight">
             Arla Started with 12 Farmers.<br />
-            We're Starting with Cattle—and Blockchain.
+            We&apos;re Starting with Cattle—and Blockchain.
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             Join the member-run Common Facility Centre that fattens, traces and sells your whole cattle under one trusted brand—so you keep the profits, not middle-men.

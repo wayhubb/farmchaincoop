@@ -37,7 +37,7 @@ export default function ArlaStory() {
           </div>
 
           <p className="text-center text-lg mt-8 font-medium">
-            That's why we built FarmChain CFC: <span className="text-primary">Arla's playbook. Blockchain's rails. Your cattle.</span>
+            That&apos;s why we built FarmChain CFC: <span className="text-primary">Arla&apos;s playbook. Blockchain&apos;s rails. Your cattle.</span>
           </p>
         </div>
       </div>

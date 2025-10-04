@@ -405,8 +405,8 @@ export default function MembershipApplicationForm({
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="nin">NIN</SelectItem>
-                        <SelectItem value="drivers-license">Driver's License</SelectItem>
-                        <SelectItem value="voters-card">Voter's Card</SelectItem>
+                        <SelectItem value="drivers-license">Driver&apos;s License</SelectItem>
+                        <SelectItem value="voters-card">Voter&apos;s Card</SelectItem>
                         <SelectItem value="passport">International Passport</SelectItem>
                       </SelectContent>
                     </Select>
