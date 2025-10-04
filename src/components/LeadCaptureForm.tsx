@@ -102,7 +102,7 @@ export default function LeadCaptureForm({ onSubmit }: LeadCaptureFormProps) {
           />
 
           <div className="text-xs text-muted-foreground">
-            We'll use this information to contact you about your application status
+            We&apos;ll use this information to contact you about your application status
           </div>
 
           <Button type="submit" className="w-full" data-testid="button-continue">

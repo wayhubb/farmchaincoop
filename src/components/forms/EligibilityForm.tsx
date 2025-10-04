@@ -11,9 +11,9 @@ import { useLocation } from "wouter";
 export default function Eligibility() {
   const [, setLocation] = useLocation();
   const [step, setStep] = useState(1);
-  const [leadData, setLeadData] = useState<any>(null);
+  const [leadData, setLeadData] = useState<Record<string, unknown> | null>(null);
   const [selectedOption, setSelectedOption] = useState<string>("financing");
-  const [eligibilityResult, setEligibilityResult] = useState<any>(null);
+  const [eligibilityResult, setEligibilityResult] = useState<Record<string, unknown> | null>(null);
 
   const steps = [
     { number: 1, title: "Lead Capture", description: "Your info" },
@@ -23,9 +23,9 @@ export default function Eligibility() {
   ];
 
   const handleLeadCapture = (data: any) => {
-    console.log("Lead captured:", data);
-    setLeadData(data);
-    setStep(2);
+  console.log("Lead captured:", data);
+  setLeadData(data as Record<string, unknown>);
+  setStep(2);
   };
 
   const handleOptionSelected = () => {
@@ -33,10 +33,31 @@ export default function Eligibility() {
     setStep(3);
   };
 
-  const handleEligibilityTest = (data: any) => {
+  const handleEligibilityTest = async (data: any) => {
     console.log("Eligibility test result:", data);
-    setEligibilityResult(data);
-    setStep(4);
+    // Combine leadData and eligibility test data
+    const formData = {
+      ...(leadData ?? {}),
+      monthlyIncome: (data as Record<string, unknown>).monthlyIncome,
+      option: selectedOption,
+    };
+    try {
+      const response = await fetch("/api/eligibility", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      setEligibilityResult({ ...(data as Record<string, unknown>), ...result });
+      setStep(4);
+    } catch (error) {
+      let errorMessage = "An unexpected error occurred";
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      setEligibilityResult({ isEligible: false, error: errorMessage });
+      setStep(4);
+    }
   };
 
   const handleStartApplication = () => {
@@ -88,7 +109,7 @@ export default function Eligibility() {
 
             {step === 4 && eligibilityResult && (
               <EligibilityResult
-                isEligible={eligibilityResult.isEligible}
+                isEligible={Boolean(eligibilityResult?.isEligible)}
                 purchaseOption={selectedOption}
                 onStartApplication={handleStartApplication}
               />

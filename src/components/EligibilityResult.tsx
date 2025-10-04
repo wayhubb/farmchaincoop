@@ -20,7 +20,7 @@ export default function EligibilityResult({ isEligible, purchaseOption, onStartA
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-2">Congratulations!</h2>
             <p className="text-lg text-muted-foreground">
-              You've passed the eligibility test
+              You&apos;ve passed the eligibility test
             </p>
           </div>
 
@@ -73,7 +73,7 @@ export default function EligibilityResult({ isEligible, purchaseOption, onStartA
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-2">Almost There!</h2>
             <p className="text-lg text-muted-foreground">
-              Your income doesn't quite meet the ₦180,000/month requirement for zero-interest financing
+              Your income doesn&apos;t quite meet the ₦180,000/month requirement for zero-interest financing
             </p>
           </div>
 

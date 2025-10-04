@@ -19,7 +19,6 @@ export default function ProgressIndicator({ currentStep, steps }: ProgressIndica
           {steps.map((step, index) => {
             const isCompleted = step.number < currentStep;
             const isCurrent = step.number === currentStep;
-            const isUpcoming = step.number > currentStep;
 
             return (
               <div key={step.number} className="flex flex-col items-center flex-1 relative">

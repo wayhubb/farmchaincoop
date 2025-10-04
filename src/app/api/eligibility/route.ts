@@ -1,44 +1,62 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 type EligibilityRequest = {
-    income: number;
+    name: string;
+    email: string;
+    phone: string;
+    monthlyIncome: number;
     option: 'financing' | 'outright';
 };
 
 type EligibilityResponse = {
-    eligible: boolean;
-    reason?: string;
+    status: 'eligible' | 'ineligible';
+    message: string;
 };
 
+let leads: any[] = [];
+
 export async function POST(req: NextRequest) {
-    const { income, option }: EligibilityRequest = await req.json();
+    try {
+        const body = await req.json();
+        const { name, email, phone, monthlyIncome, option }: EligibilityRequest = body;
 
-    let response: EligibilityResponse;
+        if (!name || !email || !phone || !monthlyIncome || !option) {
+            return new Response(
+                JSON.stringify({ status: 'error', message: 'Missing required fields.' }),
+                { status: 400 }
+            );
+        }
 
-    if (option === 'financing') {
-        if (income >= 180_000) {
-            response = { eligible: true };
+        const income = Number(monthlyIncome);
+        let status: 'eligible' | 'ineligible' = 'ineligible';
+        let message = '';
+
+        if (option === 'financing') {
+            if (income >= 180_000) {
+                status = 'eligible';
+                message = 'You are eligible for zero-interest financing.';
+            } else {
+                message = 'Minimum monthly income for financing is ₦180,000.';
+            }
+        } else if (option === 'outright') {
+            if (income >= 500_000 || option === 'outright') {
+                status = 'eligible';
+                message = 'You are eligible for cash purchase.';
+            } else {
+                message = 'Minimum income for cash purchase is ₦500,000.';
+            }
         } else {
-            response = {
-                eligible: false,
-                reason: 'Financing requires a minimum monthly income of ₦180,000.',
-            };
+            message = 'Invalid purchase option.';
         }
-    } else if (option === 'outright') {
-        if (income >= 500_000) {
-            response = { eligible: true };
-        } else {
-            response = {
-                eligible: false,
-                reason: 'Outright purchase requires a single payment of ₦500,000.',
-            };
-        }
-    } else {
-        response = {
-            eligible: false,
-            reason: 'Invalid purchase option.',
-        };
+
+        // Save lead data to mock database
+        leads.push({ name, email, phone, monthlyIncome: income, option, status });
+
+        return NextResponse.json({ status, message });
+    } catch (error: any) {
+        return new Response(
+            JSON.stringify({ status: 'error', message: error.message || 'Server error.' }),
+            { status: 500 }
+        );
     }
-
-    return NextResponse.json(response);
 }

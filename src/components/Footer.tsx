@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">FarmChain</h3>
             <p className="text-sm text-muted-foreground">
-              Africa's first blockchain cattle cooperative. We mint every cow as an NFT, unlock export premiums, and put profits in farmers' hands—not middlemen's.
+              Africa&apos;s first blockchain cattle cooperative. We mint every cow as an NFT, unlock export premiums, and put profits in farmers&apos; hands—not middlemen&apos;s.
             </p>
           </div>
 
@@ -16,9 +17,9 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/" className="text-muted-foreground hover:text-foreground">
+                <Link href="/" className="text-muted-foreground hover:text-foreground">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="/eligibility" className="text-muted-foreground hover:text-foreground">
