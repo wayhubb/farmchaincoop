@@ -25,9 +25,9 @@ export default function Eligibility() {
   ];
 
   const handleLeadCapture = (data: Record<string, unknown>) => {
-  console.log("Lead captured:", data);
-  setLeadData(data);
-  setStep(2);
+    console.log("Lead captured:", data);
+    setLeadData(data);
+    setStep(2);
   };
 
   const handleOptionSelected = () => {
