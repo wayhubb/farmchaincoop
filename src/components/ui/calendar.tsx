@@ -1,7 +1,4 @@
 "use client"
-
-"use client"
-
 import * as React from "react"
 import { DayPicker } from "react-day-picker"
 
