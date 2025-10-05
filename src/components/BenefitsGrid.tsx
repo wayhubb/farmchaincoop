@@ -1,3 +1,4 @@
+"use client";
 import { Card } from "@/components/ui/card";
 import { Coins, CreditCard, Globe, GraduationCap, Building2, Smartphone } from "lucide-react";
 

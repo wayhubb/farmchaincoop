@@ -1,3 +1,4 @@
+"use client";
 import { Card } from "@/components/ui/card";
 import { FileText, CheckCircle, UserCheck, Award } from "lucide-react";
 

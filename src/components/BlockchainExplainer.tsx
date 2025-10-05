@@ -1,3 +1,4 @@
+"use client";
 export default function BlockchainExplainer() {
   return (
     <section className="py-16 md:py-24 bg-muted/30">

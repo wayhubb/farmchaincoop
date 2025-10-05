@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 
 const forestGreen = "#228B22";
