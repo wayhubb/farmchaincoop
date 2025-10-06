@@ -14,7 +14,7 @@ export default function Home() {
   const [currentUrl, setCurrentUrl] = useState<string>("");
 
   useEffect(() => {
-    // Only access `window` on the client side
+    // Only access window on the client side
     if (typeof window !== "undefined" && window.location) {
       setCurrentUrl(window.location.href);
     }

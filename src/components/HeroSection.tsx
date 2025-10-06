@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "wouter";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
