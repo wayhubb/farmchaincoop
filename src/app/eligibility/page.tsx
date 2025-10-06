@@ -14,7 +14,7 @@ export default function EligibilityPage() {
     <div className="p-4">
       <h1 className="text-2xl font-semibold mb-2">Eligibility Check</h1>
       {currentUrl ? (
-        <p>You're viewing: {currentUrl}</p>
+        <p>You&apos;re viewing: {currentUrl}</p>
       ) : (
         <p>Loading...</p>
       )}
