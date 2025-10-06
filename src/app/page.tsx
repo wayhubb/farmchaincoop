@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
@@ -10,10 +11,11 @@ import BenefitsGrid from "@/components/BenefitsGrid";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [currentUrl, setCurrentUrl] = useState<string | null>(null);
+  const [currentUrl, setCurrentUrl] = useState<string>("");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    // Only access `window` on the client side
+    if (typeof window !== "undefined" && window.location) {
       setCurrentUrl(window.location.href);
     }
   }, []);
@@ -29,7 +31,7 @@ export default function Home() {
         <MarketDepth />
         <BenefitsGrid />
         {currentUrl && (
-          <div className="p-4">
+          <div className="p-4 text-sm text-gray-500 text-center">
             <p>You&apos;re viewing: {currentUrl}</p>
           </div>
         )}
